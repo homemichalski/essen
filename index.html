@@ -24,6 +24,32 @@
       padding-bottom: 80px;
     }
 
+    /* ── Loading overlay ── */
+    #loading-screen {
+      position: fixed; inset: 0; background: #0A0A0A; z-index: 999;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+    }
+    #loading-screen .load-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: #C9A96E;
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    #loading-screen .load-dots { display: flex; gap: 6px; }
+    #loading-screen .load-dots .load-dot:nth-child(2) { animation-delay: 0.2s; background: #888; }
+    #loading-screen .load-dots .load-dot:nth-child(3) { animation-delay: 0.4s; background: #7EB8C9; }
+    #loading-screen p { font-size: 12px; color: #444; letter-spacing: 1px; }
+    @keyframes pulse { 0%,100%{opacity:0.2;transform:scale(0.8)} 50%{opacity:1;transform:scale(1)} }
+
+    /* ── Save indicator ── */
+    #save-indicator {
+      position: fixed; top: 16px; right: 16px; z-index: 200;
+      background: rgba(10,10,10,0.9); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px; padding: 6px 12px;
+      font-size: 11px; color: #555; letter-spacing: 0.5px;
+      opacity: 0; transition: opacity 0.3s; pointer-events: none;
+    }
+    #save-indicator.saving { color: #C9A96E; opacity: 1; }
+    #save-indicator.saved  { color: #7EB8C9; opacity: 1; }
+
     /* ── Views ── */
     .view { display: none; }
     .view.active { display: block; }
@@ -69,20 +95,6 @@
     .person-card .pstats { font-size: 11px; color: #888; margin-top: 2px; letter-spacing: 0.5px; }
     .person-card .parrow { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.8; margin-top: 2px; }
 
-    /* ── Diary CTA ── */
-    .diary-cta {
-      width: 100%; margin-top: 20px; padding: 16px;
-      background: rgba(201,169,110,0.08); border: 1px solid rgba(201,169,110,0.22);
-      border-radius: 14px; cursor: pointer;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .diary-cta:active { opacity: 0.75; }
-    .diary-cta-inner { display: flex; align-items: center; gap: 10px; }
-    .diary-cta-icon { font-size: 18px; }
-    .diary-cta-title { font-size: 14px; color: #C9A96E; font-weight: 500; text-align: left; }
-    .diary-cta-sub { font-size: 11px; color: #555; margin-top: 2px; text-align: left; }
-    .diary-cta-arr { color: #555; font-size: 16px; }
-
     /* ── Summary card ── */
     .summary-card { margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; }
     .summary-card .card-title { font-size: 11px; color: #555; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; }
@@ -108,22 +120,10 @@
       padding: 8px 14px; color: #aaa; cursor: pointer; font-size: 13px; flex-shrink: 0;
       font-family: 'DM Sans', sans-serif;
     }
-    .detail-pills { flex: 1; display: flex; justify-content: flex-end; gap: 8px; }
-    .detail-pill { display: flex; align-items: center; gap: 6px; border-radius: 20px; padding: 5px 10px; }
-    .detail-pill span { font-size: 12px; font-weight: 600; }
-
     .section-block { margin-bottom: 28px; animation: fadeSlide 0.4s ease both; }
     .section-head { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.08); }
     .section-icon { font-size: 14px; color: #555; }
     .section-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #666; font-weight: 500; }
-    .col-headers { display: grid; grid-template-columns: 1fr 1fr 1fr; padding-bottom: 8px; }
-    .col-headers span { font-size: 10px; font-weight: 600; letter-spacing: 0.5px; text-align: right; }
-    .col-headers span:first-child { text-align: left; }
-    .nutrient-row { display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 11px 4px; border-bottom: 1px solid rgba(255,255,255,0.04); }
-    .nutrient-row:nth-child(even) { background: rgba(255,255,255,0.015); border-radius: 4px; }
-    .nutrient-row .nkey { font-size: 13px; color: #777; }
-    .nutrient-row .nval { font-size: 13px; font-weight: 500; text-align: right; padding-right: 8px; }
-    .nutrient-row .nval2 { font-size: 13px; font-weight: 500; text-align: right; padding-right: 4px; }
 
     /* ── Meal Plan ── */
     .meals-legend { display: flex; gap: 10px; margin-bottom: 20px; padding: 0 8px; align-items: center; }
@@ -151,41 +151,11 @@
 
     /* ── Diary ── */
     .diary-wrap { padding: 0 16px; }
-    .person-switcher { display: flex; gap: 10px; margin-bottom: 22px; }
-    .person-switch-btn {
-      flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 12px 10px; background: rgba(255,255,255,0.03);
-      border: 1.5px solid transparent; border-radius: 14px; cursor: pointer; transition: all 0.2s;
-    }
-    .person-switch-btn span { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 14px; font-weight: 600; color: #555; transition: color 0.2s; }
-
     .date-nav { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border-radius: 14px; padding: 12px 16px; margin-bottom: 24px; border: 1px solid rgba(255,255,255,0.07); }
     .date-nav-btn { background: none; border: none; color: #555; cursor: pointer; font-size: 20px; padding: 0 4px; line-height: 1; }
     .date-display { text-align: center; }
     .date-main { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 16px; font-weight: 500; color: #F0EDE8; }
     .date-sub { font-size: 10px; color: #444; margin-top: 1px; }
-
-    .diary-summary-pill { display: inline-flex; align-items: center; gap: 6px; border-radius: 20px; padding: 5px 12px; margin-bottom: 18px; }
-    .diary-summary-pill span { font-size: 11px; }
-
-    .slot-block { margin-bottom: 12px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; overflow: hidden; }
-    .slot-header { display: flex; align-items: center; justify-content: space-between; padding: 13px 16px; }
-    .slot-header.has-border { border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .slot-info { display: flex; align-items: center; gap: 8px; }
-    .slot-info .slot-icon { font-size: 16px; }
-    .slot-info .slot-name { font-size: 13px; color: #888; letter-spacing: 0.3px; }
-    .slot-add-btn { border: none; border-radius: 8px; padding: 5px 10px; cursor: pointer; font-size: 13px; font-weight: 500; transition: all 0.15s; font-family: 'DM Sans', sans-serif; }
-
-    .entry-row { display: flex; align-items: flex-start; justify-content: space-between; padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); }
-    .entry-row:last-child { border-bottom: none; }
-    .entry-text { font-size: 13px; color: #C8C4BC; line-height: 1.5; }
-    .entry-time { font-size: 10px; color: #444; margin-top: 2px; }
-    .entry-del { background: none; border: none; cursor: pointer; color: #333; font-size: 18px; padding: 0 0 0 10px; line-height: 1; flex-shrink: 0; }
-
-    .slot-input-wrap { padding: 12px 14px; }
-    .slot-textarea { width: 100%; background: rgba(0,0,0,0.35); border-radius: 10px; color: #F0EDE8; font-size: 13px; padding: 10px 12px; resize: none; height: 72px; outline: none; font-family: 'DM Sans', sans-serif; line-height: 1.5; }
-    .slot-save-btn { margin-top: 8px; width: 100%; padding: 11px; border: none; border-radius: 10px; color: #0A0A0A; font-size: 13px; font-weight: 700; cursor: pointer; letter-spacing: 0.3px; font-family: 'DM Sans', sans-serif; }
-
     .empty-state { text-align: center; padding: 30px 0; color: #333; font-size: 13px; line-height: 2; }
 
     /* ── Animations ── */
@@ -195,6 +165,20 @@
   </style>
 </head>
 <body>
+
+<!-- Loading screen -->
+<div id="loading-screen">
+  <div class="load-dots">
+    <div class="load-dot"></div>
+    <div class="load-dot"></div>
+    <div class="load-dot"></div>
+  </div>
+  <p>Daten werden geladen …</p>
+</div>
+
+<!-- Save indicator -->
+<div id="save-indicator">Speichern …</div>
+
 <div id="app">
 
   <!-- ══════════════ BOTTOM NAV ══════════════ -->
@@ -316,7 +300,6 @@
       <h1>Ernährungs&shy;tagebuch</h1>
     </div>
     <div class="diary-wrap">
-      <!-- Date Nav -->
       <div class="date-nav">
         <button class="date-nav-btn" id="date-prev">‹</button>
         <div class="date-display">
@@ -325,52 +308,68 @@
         </div>
         <button class="date-nav-btn" id="date-next">›</button>
       </div>
-      <!-- Slots -->
       <div id="diary-slots"></div>
     </div>
   </div>
 
 </div><!-- #app -->
 
-<script>
+<!-- ══════════════ FIREBASE ══════════════ -->
+<script type="module">
+import { initializeApp }                          from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+import { getFirestore, doc, getDoc, setDoc,
+         collection, onSnapshot }                 from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+
+// ── Firebase config ──────────────────────────────────
+const firebaseConfig = {
+  apiKey:            "AIzaSyDz_3z8rkL9M_7BLIXHDI5b8W7kuQegQ_w",
+  authDomain:        "essen-e4699.firebaseapp.com",
+  projectId:         "essen-e4699",
+  storageBucket:     "essen-e4699.firebasestorage.app",
+  messagingSenderId: "799776845274",
+  appId:             "1:799776845274:web:1ff120e3a3bca6f51764e3"
+};
+const fbApp = initializeApp(firebaseConfig);
+const db    = getFirestore(fbApp);
+
 // ══════════════════════════════════════════════════════
-// DATA
+// STATIC DATA
 // ══════════════════════════════════════════════════════
 const PERSONS = {
   yvonne: {
-    name: "Yvonne", stats: "165 cm · Ziel ~60 kg", gender: "female", color: "#C9A96E",
-    macro:    { "Kalorien":"1700–1800 kcal","Protein":"75–85 g","Fett":"50–60 g","Kohlenhydrate":"180–220 g","Ballaststoffe":"30–40 g","Wasser":"2–2.5 L" },
-    vitamins: { "Vitamin A":"≈ 800 µg","Vitamin D":"≈ 20 µg","Vitamin E":"12–15 mg","Vitamin K":"≈ 70 µg","Vitamin C":"≈ 100 mg","Vitamin B1":"≈ 1.2 mg","Vitamin B2":"≈ 1.3 mg","Vitamin B3":"≈ 16 mg","Vitamin B5":"≈ 5 mg","Vitamin B6":"≈ 1.4 mg","Biotin":"≈ 40 µg","Folat":"≈ 300 µg","Vitamin B12":"≈ 4 µg" },
-    minerals: { "Calcium":"≈ 1000 mg","Magnesium":"≈ 350 mg","Phosphor":"≈ 700 mg","Kalium":"≈ 4000 mg","Natrium":"≈ 1500 mg" },
-    trace:    { "Eisen":"10–15 mg","Zink":"≈ 10 mg","Jod":"≈ 150 µg","Selen":"60–70 µg","Kupfer":"≈ 1 mg","Mangan":"2–5 mg" },
-    fatty:    { "Omega-3":"1–2 g","Omega-6":"≈ 10 g" }
+    name:"Yvonne", stats:"165 cm · Ziel ~60 kg", gender:"female", color:"#C9A96E",
+    macro:    {"Kalorien":"1700–1800 kcal","Protein":"75–85 g","Fett":"50–60 g","Kohlenhydrate":"180–220 g","Ballaststoffe":"30–40 g","Wasser":"2–2.5 L"},
+    vitamins: {"Vitamin A":"≈ 800 µg","Vitamin D":"≈ 20 µg","Vitamin E":"12–15 mg","Vitamin K":"≈ 70 µg","Vitamin C":"≈ 100 mg","Vitamin B1":"≈ 1.2 mg","Vitamin B2":"≈ 1.3 mg","Vitamin B3":"≈ 16 mg","Vitamin B5":"≈ 5 mg","Vitamin B6":"≈ 1.4 mg","Biotin":"≈ 40 µg","Folat":"≈ 300 µg","Vitamin B12":"≈ 4 µg"},
+    minerals: {"Calcium":"≈ 1000 mg","Magnesium":"≈ 350 mg","Phosphor":"≈ 700 mg","Kalium":"≈ 4000 mg","Natrium":"≈ 1500 mg"},
+    trace:    {"Eisen":"10–15 mg","Zink":"≈ 10 mg","Jod":"≈ 150 µg","Selen":"60–70 µg","Kupfer":"≈ 1 mg","Mangan":"2–5 mg"},
+    fatty:    {"Omega-3":"1–2 g","Omega-6":"≈ 10 g"}
   },
   luca: {
-    name: "Luca", stats: "194 cm · 88 kg", gender: "male", color: "#7EB8C9",
-    macro:    { "Kalorien":"2600–2800 kcal","Protein":"90–110 g","Fett":"70–90 g","Kohlenhydrate":"320–380 g","Ballaststoffe":"35–45 g","Wasser":"2–3 L" },
-    vitamins: { "Vitamin A":"≈ 800 µg","Vitamin D":"≈ 20 µg","Vitamin E":"12–15 mg","Vitamin K":"≈ 70 µg","Vitamin C":"≈ 100 mg","Vitamin B1":"≈ 1.2 mg","Vitamin B2":"≈ 1.3 mg","Vitamin B3":"≈ 16 mg","Vitamin B5":"≈ 5 mg","Vitamin B6":"≈ 1.4 mg","Biotin":"≈ 40 µg","Folat":"≈ 300 µg","Vitamin B12":"≈ 4 µg" },
-    minerals: { "Calcium":"≈ 1000 mg","Magnesium":"≈ 350 mg","Phosphor":"≈ 700 mg","Kalium":"≈ 4000 mg","Natrium":"≈ 1500 mg" },
-    trace:    { "Eisen":"10–15 mg","Zink":"≈ 10 mg","Jod":"≈ 150 µg","Selen":"60–70 µg","Kupfer":"≈ 1 mg","Mangan":"2–5 mg" },
-    fatty:    { "Omega-3":"1–2 g","Omega-6":"≈ 10 g" }
+    name:"Luca", stats:"194 cm · 88 kg", gender:"male", color:"#7EB8C9",
+    macro:    {"Kalorien":"2600–2800 kcal","Protein":"90–110 g","Fett":"70–90 g","Kohlenhydrate":"320–380 g","Ballaststoffe":"35–45 g","Wasser":"2–3 L"},
+    vitamins: {"Vitamin A":"≈ 800 µg","Vitamin D":"≈ 20 µg","Vitamin E":"12–15 mg","Vitamin K":"≈ 70 µg","Vitamin C":"≈ 100 mg","Vitamin B1":"≈ 1.2 mg","Vitamin B2":"≈ 1.3 mg","Vitamin B3":"≈ 16 mg","Vitamin B5":"≈ 5 mg","Vitamin B6":"≈ 1.4 mg","Biotin":"≈ 40 µg","Folat":"≈ 300 µg","Vitamin B12":"≈ 4 µg"},
+    minerals: {"Calcium":"≈ 1000 mg","Magnesium":"≈ 350 mg","Phosphor":"≈ 700 mg","Kalium":"≈ 4000 mg","Natrium":"≈ 1500 mg"},
+    trace:    {"Eisen":"10–15 mg","Zink":"≈ 10 mg","Jod":"≈ 150 µg","Selen":"60–70 µg","Kupfer":"≈ 1 mg","Mangan":"2–5 mg"},
+    fatty:    {"Omega-3":"1–2 g","Omega-6":"≈ 10 g"}
   }
 };
 
 const SECTIONS = [
-  { id:"macro",    label:"Makronährstoffe", icon:"⚡", keys:["Kalorien","Protein","Fett","Kohlenhydrate","Ballaststoffe","Wasser"] },
-  { id:"vitamins", label:"Vitamine",        icon:"✦", keys:["Vitamin A","Vitamin D","Vitamin E","Vitamin K","Vitamin C","Vitamin B1","Vitamin B2","Vitamin B3","Vitamin B5","Vitamin B6","Biotin","Folat","Vitamin B12"] },
-  { id:"minerals", label:"Mineralstoffe",   icon:"◈", keys:["Calcium","Magnesium","Phosphor","Kalium","Natrium"] },
-  { id:"trace",    label:"Spurenelemente",  icon:"◇", keys:["Eisen","Zink","Jod","Selen","Kupfer","Mangan"] },
-  { id:"fatty",    label:"Fettsäuren",      icon:"〜", keys:["Omega-3","Omega-6"] }
+  {id:"macro",    label:"Makronährstoffe", icon:"⚡", keys:["Kalorien","Protein","Fett","Kohlenhydrate","Ballaststoffe","Wasser"]},
+  {id:"vitamins", label:"Vitamine",        icon:"✦", keys:["Vitamin A","Vitamin D","Vitamin E","Vitamin K","Vitamin C","Vitamin B1","Vitamin B2","Vitamin B3","Vitamin B5","Vitamin B6","Biotin","Folat","Vitamin B12"]},
+  {id:"minerals", label:"Mineralstoffe",   icon:"◈", keys:["Calcium","Magnesium","Phosphor","Kalium","Natrium"]},
+  {id:"trace",    label:"Spurenelemente",  icon:"◇", keys:["Eisen","Zink","Jod","Selen","Kupfer","Mangan"]},
+  {id:"fatty",    label:"Fettsäuren",      icon:"〜", keys:["Omega-3","Omega-6"]}
 ];
 
-const MEAL_PLAN = [
-  { day:"Montag",    yvonne:{breakfast:"200g Sojajoghurt, 50g Hafer, Beeren, 1 TL Leinsamen",lunch:"1 Wrap, Hummus, Kichererbsen, Gemüse",dinner:"150g Tofu, Reis 70g, Brokkoli, Karotten"},    luca:{breakfast:"300g Sojajoghurt, 80g Hafer, Beeren, 1 EL Leinsamen",lunch:"2 Wraps, Hummus, Kichererbsen, Gemüse",dinner:"250g Tofu, Reis 120g, Brokkoli, Karotten"} },
-  { day:"Dienstag",  yvonne:{breakfast:"Banane, Sojamilch 250ml, Beeren, 25g Hafer",lunch:"70g Quinoa, Kichererbsen, Paprika, Spinat",dinner:"250g Kartoffeln, Kidneybohnen, Salat"},             luca:{breakfast:"Banane, Sojamilch 350ml, Beeren, 40g Hafer",lunch:"120g Quinoa, Kichererbsen, Paprika, Spinat",dinner:"400g Kartoffeln, Kidneybohnen, Salat"} },
-  { day:"Mittwoch",  yvonne:{breakfast:"2 Scheiben Brot, Erdnussmus, Banane",lunch:"140g Linsen, Tomaten, Gurke",dinner:"150g Tofu, Reis 70g, Gemüse"},                                          luca:{breakfast:"3 Scheiben Brot, Erdnussmus, Banane",lunch:"200g Linsen, Tomaten, Gurke, Olivenöl",dinner:"250g Tofu, Reis 110g, Gemüse"} },
-  { day:"Donnerstag",yvonne:{breakfast:"200g Sojajoghurt, kleine Portion Nüsse, Beeren",lunch:"1 Wrap, Falafel, Tahini, Salat",dinner:"Edamame 130g, Reis 70g, Gemüse"},                         luca:{breakfast:"300g Sojajoghurt, Walnüsse, Beeren",lunch:"2 Wraps, Falafel, Tahini, Salat",dinner:"Edamame 200g, Reis 110g, Gemüse"} },
-  { day:"Freitag",   yvonne:{breakfast:"Sojamilch 250ml, Banane, Beeren",lunch:"1 Wrap, Kidneybohnen, Avocado, Salat",dinner:"160g Linsen Dal, Reis 70g"},                                      luca:{breakfast:"Sojamilch 350ml, Banane, Beeren, Mandeln",lunch:"2 Wraps, Kidneybohnen, Avocado, Salat",dinner:"250g Linsen Dal, Reis 110g"} },
-  { day:"Samstag",   yvonne:{breakfast:"2 Scheiben Brot, Avocado, Tomaten",lunch:"70g Quinoa, Tofu, Brokkoli",dinner:"150g Tofu, Kartoffeln 200g, Gemüse"},                                     luca:{breakfast:"3 Scheiben Brot, Avocado, Tomaten",lunch:"120g Quinoa, Tofu, Brokkoli, Tahini",dinner:"250g Tofu, Kartoffeln 300g, Gemüse"} },
-  { day:"Sonntag",   yvonne:{breakfast:"200g Sojajoghurt, Beeren",lunch:"Falafel, Vollkornbrot 1x, Salat",dinner:"160g Chili, Reis 70g"},                                                       luca:{breakfast:"300g Sojajoghurt, Beeren, Chiasamen",lunch:"Falafel, Vollkornbrot 2x, Salat",dinner:"250g Chili, Reis 110g"} }
+const DEFAULT_MEAL_PLAN = [
+  {day:"Montag",    yvonne:{breakfast:"200g Sojajoghurt, 50g Hafer, Beeren, 1 TL Leinsamen",lunch:"1 Wrap, Hummus, Kichererbsen, Gemüse",dinner:"150g Tofu, Reis 70g, Brokkoli, Karotten"},    luca:{breakfast:"300g Sojajoghurt, 80g Hafer, Beeren, 1 EL Leinsamen",lunch:"2 Wraps, Hummus, Kichererbsen, Gemüse",dinner:"250g Tofu, Reis 120g, Brokkoli, Karotten"}},
+  {day:"Dienstag",  yvonne:{breakfast:"Banane, Sojamilch 250ml, Beeren, 25g Hafer",lunch:"70g Quinoa, Kichererbsen, Paprika, Spinat",dinner:"250g Kartoffeln, Kidneybohnen, Salat"},             luca:{breakfast:"Banane, Sojamilch 350ml, Beeren, 40g Hafer",lunch:"120g Quinoa, Kichererbsen, Paprika, Spinat",dinner:"400g Kartoffeln, Kidneybohnen, Salat"}},
+  {day:"Mittwoch",  yvonne:{breakfast:"2 Scheiben Brot, Erdnussmus, Banane",lunch:"140g Linsen, Tomaten, Gurke",dinner:"150g Tofu, Reis 70g, Gemüse"},                                          luca:{breakfast:"3 Scheiben Brot, Erdnussmus, Banane",lunch:"200g Linsen, Tomaten, Gurke, Olivenöl",dinner:"250g Tofu, Reis 110g, Gemüse"}},
+  {day:"Donnerstag",yvonne:{breakfast:"200g Sojajoghurt, kleine Portion Nüsse, Beeren",lunch:"1 Wrap, Falafel, Tahini, Salat",dinner:"Edamame 130g, Reis 70g, Gemüse"},                         luca:{breakfast:"300g Sojajoghurt, Walnüsse, Beeren",lunch:"2 Wraps, Falafel, Tahini, Salat",dinner:"Edamame 200g, Reis 110g, Gemüse"}},
+  {day:"Freitag",   yvonne:{breakfast:"Sojamilch 250ml, Banane, Beeren",lunch:"1 Wrap, Kidneybohnen, Avocado, Salat",dinner:"160g Linsen Dal, Reis 70g"},                                      luca:{breakfast:"Sojamilch 350ml, Banane, Beeren, Mandeln",lunch:"2 Wraps, Kidneybohnen, Avocado, Salat",dinner:"250g Linsen Dal, Reis 110g"}},
+  {day:"Samstag",   yvonne:{breakfast:"2 Scheiben Brot, Avocado, Tomaten",lunch:"70g Quinoa, Tofu, Brokkoli",dinner:"150g Tofu, Kartoffeln 200g, Gemüse"},                                     luca:{breakfast:"3 Scheiben Brot, Avocado, Tomaten",lunch:"120g Quinoa, Tofu, Brokkoli, Tahini",dinner:"250g Tofu, Kartoffeln 300g, Gemüse"}},
+  {day:"Sonntag",   yvonne:{breakfast:"200g Sojajoghurt, Beeren",lunch:"Falafel, Vollkornbrot 1x, Salat",dinner:"160g Chili, Reis 70g"},                                                       luca:{breakfast:"300g Sojajoghurt, Beeren, Chiasamen",lunch:"Falafel, Vollkornbrot 2x, Salat",dinner:"250g Chili, Reis 110g"}}
 ];
 
 const MEAL_SLOTS = [
@@ -381,48 +380,98 @@ const MEAL_SLOTS = [
   {key:"dinner",   label:"Abend",    icon:"🌙"}
 ];
 
+const MEAL_LABELS = {breakfast:"🌅 Frühstück", lunch:"☀️ Mittag", dinner:"🌙 Abend"};
+
 // ══════════════════════════════════════════════════════
 // STATE
 // ══════════════════════════════════════════════════════
-let currentNav = "home";
-let mealPlanData = JSON.parse(JSON.stringify(MEAL_PLAN)); // deep copy
-let diaryData = {}; // { "yvonne|2026-03-09": { breakfast:[{text,time}] } }
-let diaryDate = todayKey();
-let activeSlotInput = null; // { pid, key } or null
+let mealPlanData = JSON.parse(JSON.stringify(DEFAULT_MEAL_PLAN));
+let diaryData    = {};   // { "yvonne|2026-03-09": { breakfast:[{text,time}] } }
+let diaryDate    = todayKey();
+let activeSlotInput = null;
+let saveTimer    = null;
 
 // ══════════════════════════════════════════════════════
 // HELPERS
 // ══════════════════════════════════════════════════════
-function todayKey() {
-  return new Date().toISOString().slice(0,10);
+function todayKey() { return new Date().toISOString().slice(0,10); }
+function formatDE(iso) { const [y,m,d]=iso.split("-"); return `${d}.${m}.${y}`; }
+function shiftDate(iso,days) { const d=new Date(iso); d.setDate(d.getDate()+days); return d.toISOString().slice(0,10); }
+function nowTime() { return new Date().toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"}); }
+function escHtml(s) { return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+// ── Save indicator ──
+function showSaving() {
+  const el = document.getElementById("save-indicator");
+  el.textContent = "Speichern …";
+  el.className = "saving";
+  clearTimeout(saveTimer);
 }
-function formatDE(iso) {
-  const [y,m,d] = iso.split("-");
-  return `${d}.${m}.${y}`;
+function showSaved() {
+  const el = document.getElementById("save-indicator");
+  el.textContent = "✓ Gespeichert";
+  el.className = "saved";
+  saveTimer = setTimeout(() => { el.className = ""; }, 2000);
 }
-function shiftDate(iso, days) {
-  const d = new Date(iso);
-  d.setDate(d.getDate() + days);
-  return d.toISOString().slice(0,10);
+
+// ══════════════════════════════════════════════════════
+// FIREBASE — LOAD & SAVE
+// ══════════════════════════════════════════════════════
+
+// ── Meal plan ──
+async function loadMealPlan() {
+  try {
+    const snap = await getDoc(doc(db, "app", "mealplan"));
+    if (snap.exists()) {
+      mealPlanData = snap.data().days;
+    }
+  } catch(e) { console.warn("Meal plan load failed", e); }
 }
-function nowTime() {
-  return new Date().toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"});
+
+async function saveMealPlan() {
+  showSaving();
+  try {
+    await setDoc(doc(db, "app", "mealplan"), { days: mealPlanData });
+    showSaved();
+  } catch(e) { console.warn("Meal plan save failed", e); }
+}
+
+// ── Diary — live listener per day-doc ──
+// Doc path: diary/{pid}_{date}  →  { slots: { breakfast:[{text,time}], … } }
+function diaryDocId(pid, date) { return `${pid}_${date}`; }
+
+async function loadDiaryDay(date) {
+  for (const pid of ["yvonne","luca"]) {
+    try {
+      const snap = await getDoc(doc(db, "diary", diaryDocId(pid, date)));
+      if (snap.exists()) {
+        diaryData[`${pid}|${date}`] = snap.data().slots || {};
+      }
+    } catch(e) { console.warn("Diary load failed", e); }
+  }
+}
+
+async function saveDiaryEntry(pid, date) {
+  showSaving();
+  const dk = `${pid}|${date}`;
+  try {
+    await setDoc(doc(db, "diary", diaryDocId(pid, date)), {
+      slots: diaryData[dk] || {}
+    });
+    showSaved();
+  } catch(e) { console.warn("Diary save failed", e); }
 }
 
 // ══════════════════════════════════════════════════════
 // NAVIGATION
 // ══════════════════════════════════════════════════════
 function showNav(id) {
-  currentNav = id;
   document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
   document.getElementById("view-"+id).classList.add("active");
-  document.querySelectorAll(".nav-btn").forEach(b => {
-    b.classList.toggle("active", b.dataset.nav === id);
-  });
-  if (id === "meals") renderMealPlan();
-  if (id === "diary") renderDiary();
+  document.querySelectorAll(".nav-btn").forEach(b => b.classList.toggle("active", b.dataset.nav===id));
+  if (id==="meals") renderMealPlan();
+  if (id==="diary") { loadDiaryDay(diaryDate).then(renderDiary); }
 }
-
 document.querySelectorAll(".nav-btn").forEach(btn => {
   btn.addEventListener("click", () => showNav(btn.dataset.nav));
 });
@@ -431,16 +480,14 @@ document.querySelectorAll(".nav-btn").forEach(btn => {
 // NUTRITION OVERLAY
 // ══════════════════════════════════════════════════════
 let nutritionPersonId = "yvonne";
-
 const AVATAR_SVG = {
-  yvonne: `<svg width="26" height="26" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="22" r="14" fill="#C9A96E" opacity="0.9"/><ellipse cx="40" cy="58" rx="18" ry="22" fill="#C9A96E" opacity="0.75"/><path d="M26 18 Q28 8 40 8 Q52 8 54 18" stroke="#C9A96E" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M26 18 Q22 22 24 28" stroke="#C9A96E" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M54 18 Q58 22 56 28" stroke="#C9A96E" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>`,
+  yvonne:`<svg width="26" height="26" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="22" r="14" fill="#C9A96E" opacity="0.9"/><ellipse cx="40" cy="58" rx="18" ry="22" fill="#C9A96E" opacity="0.75"/><path d="M26 18 Q28 8 40 8 Q52 8 54 18" stroke="#C9A96E" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M26 18 Q22 22 24 28" stroke="#C9A96E" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M54 18 Q58 22 56 28" stroke="#C9A96E" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>`,
   luca: `<svg width="26" height="26" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="20" r="14" fill="#7EB8C9" opacity="0.9"/><rect x="22" y="36" width="36" height="28" rx="6" fill="#7EB8C9" opacity="0.75"/><rect x="13" y="38" width="11" height="22" rx="5" fill="#7EB8C9" opacity="0.5"/><rect x="56" y="38" width="11" height="22" rx="5" fill="#7EB8C9" opacity="0.5"/><rect x="28" y="64" width="10" height="16" rx="5" fill="#7EB8C9" opacity="0.5"/><rect x="42" y="64" width="10" height="16" rx="5" fill="#7EB8C9" opacity="0.5"/></svg>`
 };
 
 function openNutrition(pid) {
   nutritionPersonId = pid;
   const p = PERSONS[pid];
-  // update pill in header
   const pill = document.getElementById("nutrition-person-pill");
   pill.style.background = `${p.color}18`;
   pill.style.border = `1px solid ${p.color}33`;
@@ -453,9 +500,8 @@ function closeNutrition() {
   document.getElementById("overlay-nutrition").classList.remove("active");
   document.getElementById("bottom-nav").style.display = "flex";
 }
-
 document.getElementById("card-yvonne").addEventListener("click", () => openNutrition("yvonne"));
-document.getElementById("card-luca").addEventListener("click", () => openNutrition("luca"));
+document.getElementById("card-luca").addEventListener("click",   () => openNutrition("luca"));
 document.getElementById("back-from-nutrition").addEventListener("click", closeNutrition);
 
 function renderNutritionSections() {
@@ -467,8 +513,8 @@ function renderNutritionSections() {
     html += `<div class="section-head"><span class="section-icon">${sec.icon}</span><span class="section-label">${sec.label}</span></div>`;
     sec.keys.forEach((key, i) => {
       const val = p[sec.id][key] || "–";
-      const bg = i % 2 === 0 ? "background:rgba(255,255,255,0.015);border-radius:4px" : "";
-      html += `<div class="nutrient-row-single" style="display:flex;justify-content:space-between;align-items:center;padding:12px 4px;border-bottom:1px solid rgba(255,255,255,0.04);${bg}">
+      const bg = i%2===0 ? "background:rgba(255,255,255,0.015);border-radius:4px" : "";
+      html += `<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 4px;border-bottom:1px solid rgba(255,255,255,0.04);${bg}">
         <span style="font-size:13px;color:#777">${key}</span>
         <span style="font-size:13px;font-weight:500;color:${p.color}">${val}</span>
       </div>`;
@@ -481,8 +527,6 @@ function renderNutritionSections() {
 // ══════════════════════════════════════════════════════
 // MEAL PLAN
 // ══════════════════════════════════════════════════════
-const MEAL_LABELS = {breakfast:"🌅 Frühstück", lunch:"☀️ Mittag", dinner:"🌙 Abend"};
-
 function renderMealPlan() {
   const list = document.getElementById("meal-plan-list");
   let html = "";
@@ -494,9 +538,7 @@ function renderMealPlan() {
       </button>
       <div class="day-content" id="day-content-${di}">`;
     Object.entries(MEAL_LABELS).forEach(([mkey, mlabel]) => {
-      html += `<div class="meal-section">
-        <div class="meal-label-row">${mlabel}</div>
-        <div class="meal-grid">`;
+      html += `<div class="meal-section"><div class="meal-label-row">${mlabel}</div><div class="meal-grid">`;
       ["yvonne","luca"].forEach(pid => {
         const p = PERSONS[pid];
         html += `<div class="meal-cell" style="background:${p.color}0D;border:1px solid ${p.color}25" id="cell-${di}-${pid}-${mkey}">
@@ -511,87 +553,74 @@ function renderMealPlan() {
   list.innerHTML = html;
 }
 
-function toggleDay(di) {
+window.toggleDay = function(di) {
   const content = document.getElementById("day-content-"+di);
-  const chev = document.getElementById("chev-"+di);
-  const open = content.classList.toggle("open");
+  const chev    = document.getElementById("chev-"+di);
+  const open    = content.classList.toggle("open");
   chev.textContent = open ? "−" : "+";
-}
+};
 
-function startMealEdit(di, pid, mkey) {
-  const cellId = `cell-${di}-${pid}-${mkey}`;
-  const cell = document.getElementById(cellId);
-  const p = PERSONS[pid];
-  const current = mealPlanData[di][pid][mkey];
+window.startMealEdit = function(di, pid, mkey) {
+  const cell = document.getElementById(`cell-${di}-${pid}-${mkey}`);
+  const p    = PERSONS[pid];
   cell.innerHTML = `
     <div class="meal-cell-name" style="color:${p.color}">${p.name}</div>
-    <textarea class="meal-edit-area" style="border:1px solid ${p.color}55" id="ta-${di}-${pid}-${mkey}">${current}</textarea>
+    <textarea class="meal-edit-area" style="border:1px solid ${p.color}55" id="ta-${di}-${pid}-${mkey}">${mealPlanData[di][pid][mkey]}</textarea>
     <div class="meal-edit-btns">
       <button class="meal-save-btn" style="background:${p.color}" onclick="saveMealEdit(${di},'${pid}','${mkey}')">✓</button>
       <button class="meal-cancel-btn" onclick="cancelMealEdit(${di},'${pid}','${mkey}')">✕</button>
     </div>`;
   document.getElementById(`ta-${di}-${pid}-${mkey}`).focus();
-}
+};
 
-function saveMealEdit(di, pid, mkey) {
+window.saveMealEdit = async function(di, pid, mkey) {
   const val = document.getElementById(`ta-${di}-${pid}-${mkey}`).value.trim();
   if (val) mealPlanData[di][pid][mkey] = val;
   refreshMealCell(di, pid, mkey);
-}
-function cancelMealEdit(di, pid, mkey) {
-  refreshMealCell(di, pid, mkey);
-}
+  await saveMealPlan(); // 🔥 persist to Firebase
+};
+
+window.cancelMealEdit = function(di, pid, mkey) { refreshMealCell(di, pid, mkey); };
+
 function refreshMealCell(di, pid, mkey) {
-  const cellId = `cell-${di}-${pid}-${mkey}`;
-  const cell = document.getElementById(cellId);
-  const p = PERSONS[pid];
+  const cell = document.getElementById(`cell-${di}-${pid}-${mkey}`);
+  const p    = PERSONS[pid];
   cell.innerHTML = `
     <div class="meal-cell-name" style="color:${p.color}">${p.name}</div>
     <button class="meal-cell-text" onclick="startMealEdit(${di},'${pid}','${mkey}')">${mealPlanData[di][pid][mkey]}</button>`;
 }
 
-function escHtml(str) {
-  return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-}
-
 // ══════════════════════════════════════════════════════
 // DIARY
 // ══════════════════════════════════════════════════════
-// activeSlotInput: { pid, key } or null
 function renderDiary() {
   const isToday = diaryDate === todayKey();
   document.getElementById("date-main-label").textContent = isToday ? "Heute" : formatDE(diaryDate);
-  document.getElementById("date-sub-label").textContent = isToday ? "" : "";
+  document.getElementById("date-sub-label").textContent  = "";
 
   const container = document.getElementById("diary-slots");
   let html = "";
 
   MEAL_SLOTS.forEach(slot => {
-    // check if any person has entries or is adding
     const yEntries = (diaryData[`yvonne|${diaryDate}`] || {})[slot.key] || [];
-    const lEntries = (diaryData[`luca|${diaryDate}`] || {})[slot.key] || [];
-    const hasAny = yEntries.length > 0 || lEntries.length > 0;
-    const yAdding = activeSlotInput && activeSlotInput.pid === "yvonne" && activeSlotInput.key === slot.key;
-    const lAdding = activeSlotInput && activeSlotInput.pid === "luca" && activeSlotInput.key === slot.key;
+    const lEntries = (diaryData[`luca|${diaryDate}`]   || {})[slot.key] || [];
+    const yAdding  = activeSlotInput?.pid==="yvonne" && activeSlotInput?.key===slot.key;
+    const lAdding  = activeSlotInput?.pid==="luca"   && activeSlotInput?.key===slot.key;
 
-    html += `<div class="slot-block" style="margin-bottom:14px;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden">`;
-
-    // Slot label header
+    html += `<div style="margin-bottom:14px;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden">`;
     html += `<div style="display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.06)">
       <span style="font-size:15px">${slot.icon}</span>
       <span style="font-size:12px;color:#666;letter-spacing:1px;text-transform:uppercase">${slot.label}</span>
     </div>`;
-
-    // Two columns: Yvonne | Luca
     html += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">`;
-    ["yvonne","luca"].forEach((pid, ci) => {
-      const p = PERSONS[pid];
-      const entries = pid === "yvonne" ? yEntries : lEntries;
-      const isAdding = pid === "yvonne" ? yAdding : lAdding;
-      const borderLeft = ci === 1 ? "border-left:1px solid rgba(255,255,255,0.05)" : "";
 
-      html += `<div style="padding:10px 12px;${borderLeft}">`;
-      // Person mini header
+    ["yvonne","luca"].forEach((pid, ci) => {
+      const p        = PERSONS[pid];
+      const entries  = pid==="yvonne" ? yEntries : lEntries;
+      const isAdding = pid==="yvonne" ? yAdding  : lAdding;
+      const bl       = ci===1 ? "border-left:1px solid rgba(255,255,255,0.05)" : "";
+
+      html += `<div style="padding:10px 12px;${bl}">`;
       html += `<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
         <div style="display:flex;align-items:center;gap:5px">
           ${AVATAR_SVG[pid].replace('width="26" height="26"','width="18" height="18"')}
@@ -602,7 +631,6 @@ function renderDiary() {
         </button>
       </div>`;
 
-      // Entries
       entries.forEach((entry, idx) => {
         html += `<div style="margin-bottom:6px;padding:6px 8px;background:rgba(255,255,255,0.03);border-radius:8px;position:relative" class="slide-up">
           <div style="font-size:12px;color:#C8C4BC;line-height:1.45;padding-right:16px">${escHtml(entry.text)}</div>
@@ -611,10 +639,9 @@ function renderDiary() {
         </div>`;
       });
 
-      // Input
       if (isAdding) {
         html += `<div class="slide-up">
-          <textarea id="slot-ta-${pid}-${slot.key}" 
+          <textarea id="slot-ta-${pid}-${slot.key}"
             style="width:100%;background:rgba(0,0,0,0.35);border:1px solid ${p.color}40;border-radius:8px;color:#F0EDE8;font-size:12px;padding:8px;resize:none;height:64px;outline:none;font-family:'DM Sans',sans-serif;line-height:1.4;box-sizing:border-box"
             placeholder="${slot.label}..."
             onkeydown="handleSlotEnter(event,'${pid}','${slot.key}')"
@@ -622,39 +649,31 @@ function renderDiary() {
           <button onclick="saveEntry('${pid}','${slot.key}')" style="margin-top:5px;width:100%;padding:8px;background:${p.color};border:none;border-radius:8px;color:#0A0A0A;font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif">Speichern</button>
         </div>`;
       }
-
-      if (entries.length === 0 && !isAdding) {
+      if (entries.length===0 && !isAdding) {
         html += `<div style="font-size:11px;color:#333;padding:2px 0">–</div>`;
       }
-
       html += `</div>`;
     });
     html += `</div></div>`;
   });
 
   container.innerHTML = html;
-
-  // autofocus
   if (activeSlotInput) {
     const ta = document.getElementById(`slot-ta-${activeSlotInput.pid}-${activeSlotInput.key}`);
     if (ta) ta.focus();
   }
 }
 
-function toggleSlotInput(pid, key) {
-  if (activeSlotInput && activeSlotInput.pid === pid && activeSlotInput.key === key) {
-    activeSlotInput = null;
-  } else {
-    activeSlotInput = { pid, key };
-  }
+window.toggleSlotInput = function(pid, key) {
+  activeSlotInput = (activeSlotInput?.pid===pid && activeSlotInput?.key===key) ? null : {pid, key};
   renderDiary();
-}
+};
 
-function handleSlotEnter(e, pid, key) {
-  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); saveEntry(pid, key); }
-}
+window.handleSlotEnter = function(e, pid, key) {
+  if (e.key==="Enter" && !e.shiftKey) { e.preventDefault(); window.saveEntry(pid, key); }
+};
 
-function saveEntry(pid, key) {
+window.saveEntry = async function(pid, key) {
   const ta = document.getElementById(`slot-ta-${pid}-${key}`);
   if (!ta || !ta.value.trim()) return;
   const dk = `${pid}|${diaryDate}`;
@@ -663,33 +682,45 @@ function saveEntry(pid, key) {
   diaryData[dk][key].push({ text: ta.value.trim(), time: nowTime() });
   activeSlotInput = null;
   renderDiary();
-}
+  await saveDiaryEntry(pid, diaryDate); // 🔥 persist to Firebase
+};
 
-function deleteEntry(pid, key, idx) {
+window.deleteEntry = async function(pid, key, idx) {
   const dk = `${pid}|${diaryDate}`;
-  if (diaryData[dk] && diaryData[dk][key]) {
+  if (diaryData[dk]?.[key]) {
     diaryData[dk][key].splice(idx, 1);
     renderDiary();
+    await saveDiaryEntry(pid, diaryDate); // 🔥 persist to Firebase
   }
-}
+};
 
-// Date nav
-document.getElementById("date-prev").addEventListener("click", () => {
+document.getElementById("date-prev").addEventListener("click", async () => {
   diaryDate = shiftDate(diaryDate, -1);
   activeSlotInput = null;
+  await loadDiaryDay(diaryDate);
   renderDiary();
 });
-document.getElementById("date-next").addEventListener("click", () => {
+document.getElementById("date-next").addEventListener("click", async () => {
   diaryDate = shiftDate(diaryDate, 1);
   activeSlotInput = null;
+  await loadDiaryDay(diaryDate);
   renderDiary();
 });
 
 // ══════════════════════════════════════════════════════
-// INIT
+// INIT — load data, then render
 // ══════════════════════════════════════════════════════
-renderMealPlan();
-renderDiary();
+async function init() {
+  await Promise.all([
+    loadMealPlan(),
+    loadDiaryDay(diaryDate)
+  ]);
+  renderMealPlan();
+  renderDiary();
+  document.getElementById("loading-screen").style.display = "none";
+}
+
+init();
 </script>
 </body>
 </html>
