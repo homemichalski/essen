@@ -285,11 +285,13 @@
   <div class="overlay" id="overlay-nutrition">
     <div class="detail-sticky">
       <div class="detail-header-row">
-        <button class="back-btn" id="back-from-nutrition">← Zurück</button>
         <div id="nutrition-person-pill" style="display:flex;align-items:center;gap:8px;border-radius:20px;padding:6px 14px"></div>
       </div>
     </div>
-    <div style="padding:20px 16px 40px" id="nutrition-sections"></div>
+    <div style="padding:20px 16px 100px" id="nutrition-sections"></div>
+    <div style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;padding:16px 20px;padding-bottom:max(16px,env(safe-area-inset-bottom));background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,0.06);z-index:110;">
+      <button class="back-btn" id="back-from-nutrition" style="width:100%;text-align:center;padding:12px;">← Zurück</button>
+    </div>
   </div>
 
   <!-- ══════════════ PAGE: HOME ══════════════ -->
