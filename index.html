@@ -842,7 +842,7 @@ document.getElementById("date-prev").addEventListener("click", async () => {
   activeSlotInput = null;
   await Promise.all([loadDiaryDay(diaryDate), loadHealthDay(diaryDate)]);
   renderDiary();
-  renderHealthPanel();
+  renderHealthPanel(healthTabPid);
 });
 document.getElementById("date-next").addEventListener("click", async () => {
   diaryDate = shiftDate(diaryDate, 1);
@@ -1054,7 +1054,7 @@ async function init() {
   ]);
   renderMealPlan();
   renderDiary();
-  renderHealthPanel();
+  renderHealthPanel(healthTabPid);
   document.getElementById("loading-screen").style.display = "none";
 }
 
