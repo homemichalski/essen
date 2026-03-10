@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>Ernährungsplan · Yvonne & Luca</title>
+  <title>Ernährungsplan · Yvonne, Luca & Alex</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -81,7 +81,7 @@
     .nav-btn.active .nav-icon, .nav-btn.active .nav-label { color: #C9A96E; }
 
     /* ── Person Cards ── */
-    .person-cards { display: flex; gap: 14px; }
+    .person-cards { display: flex; gap: 14px; flex-wrap: wrap; }
     .person-card {
       flex: 1; display: flex; flex-direction: column; align-items: center; gap: 12px;
       background: rgba(255,255,255,0.04);
@@ -139,7 +139,7 @@
     .day-content.open { display: block; }
     .meal-section { margin-bottom: 16px; }
     .meal-label-row { font-size: 11px; color: #555; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
-    .meal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .meal-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
     .meal-cell { border-radius: 10px; padding: 10px; }
     .meal-cell-name { font-size: 10px; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 6px; }
     .meal-cell-text { font-size: 12px; color: #C8C4BC; line-height: 1.5; background: none; border: none; cursor: pointer; text-align: left; padding: 0; width: 100%; font-family: 'DM Sans', sans-serif; }
@@ -258,6 +258,25 @@
           </div>
           <div class="parrow" style="color:#7EB8C9">Details →</div>
         </div>
+        <!-- Alex -->
+        <div class="person-card" id="card-alex" style="border-color:rgba(160,210,120,0.2);flex-basis:100%">
+          <div class="avatar-wrap" style="background:radial-gradient(circle at 40% 30%,rgba(160,210,120,0.13),transparent 70%);border-color:rgba(160,210,120,0.3)">
+            <svg width="72" height="72" viewBox="0 0 80 80" fill="none">
+              <circle cx="40" cy="20" r="14" fill="#A0D278" opacity="0.9"/>
+              <rect x="23" y="36" width="34" height="26" rx="6" fill="#A0D278" opacity="0.75"/>
+              <rect x="14" y="38" width="11" height="20" rx="5" fill="#A0D278" opacity="0.5"/>
+              <rect x="55" y="38" width="11" height="20" rx="5" fill="#A0D278" opacity="0.5"/>
+              <rect x="29" y="62" width="10" height="15" rx="5" fill="#A0D278" opacity="0.5"/>
+              <rect x="41" y="62" width="10" height="15" rx="5" fill="#A0D278" opacity="0.5"/>
+              <path d="M32 20 L40 14 L48 20" stroke="#A0D278" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+            </svg>
+          </div>
+          <div style="text-align:center">
+            <div class="pname">Alex</div>
+            <div class="pstats">174 cm · 90 kg · Abnehmen/Definieren</div>
+          </div>
+          <div class="parrow" style="color:#A0D278">Details →</div>
+        </div>
       </div>
 
       <!-- Summary -->
@@ -286,6 +305,10 @@
         <div class="meal-legend-pill" style="background:rgba(126,184,201,0.12)">
           <svg width="18" height="18" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="20" r="14" fill="#7EB8C9" opacity="0.9"/><rect x="22" y="36" width="36" height="28" rx="6" fill="#7EB8C9" opacity="0.75"/></svg>
           <span style="color:#7EB8C9">Luca</span>
+        </div>
+        <div class="meal-legend-pill" style="background:rgba(160,210,120,0.12)">
+          <svg width="18" height="18" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="20" r="14" fill="#A0D278" opacity="0.9"/><rect x="23" y="36" width="34" height="26" rx="6" fill="#A0D278" opacity="0.75"/></svg>
+          <span style="color:#A0D278">Alex</span>
         </div>
         <span class="meals-hint">Tippen zum Bearbeiten</span>
       </div>
@@ -351,6 +374,14 @@ const PERSONS = {
     minerals: {"Calcium":"≈ 1000 mg","Magnesium":"≈ 350 mg","Phosphor":"≈ 700 mg","Kalium":"≈ 4000 mg","Natrium":"≈ 1500 mg"},
     trace:    {"Eisen":"10–15 mg","Zink":"≈ 10 mg","Jod":"≈ 150 µg","Selen":"60–70 µg","Kupfer":"≈ 1 mg","Mangan":"2–5 mg"},
     fatty:    {"Omega-3":"1–2 g","Omega-6":"≈ 10 g"}
+  },
+  alex: {
+    name:"Alex", stats:"174 cm · 90 kg · Abnehmen/Definieren", gender:"male", color:"#A0D278",
+    macro:    {"Kalorien":"2000–2200 kcal","Protein":"130–150 g","Fett":"55–70 g","Kohlenhydrate":"180–220 g","Ballaststoffe":"30–40 g","Wasser":"2.5–3 L"},
+    vitamins: {"Vitamin A":"≈ 800 µg","Vitamin D":"≈ 20 µg","Vitamin E":"12–15 mg","Vitamin K":"≈ 70 µg","Vitamin C":"≈ 100 mg","Vitamin B1":"≈ 1.2 mg","Vitamin B2":"≈ 1.3 mg","Vitamin B3":"≈ 16 mg","Vitamin B5":"≈ 5 mg","Vitamin B6":"≈ 1.6 mg","Biotin":"≈ 40 µg","Folat":"≈ 300 µg","Vitamin B12":"≈ 4 µg"},
+    minerals: {"Calcium":"≈ 1000 mg","Magnesium":"≈ 400 mg","Phosphor":"≈ 700 mg","Kalium":"≈ 4000 mg","Natrium":"≈ 1500 mg"},
+    trace:    {"Eisen":"10–15 mg","Zink":"≈ 12 mg","Jod":"≈ 150 µg","Selen":"60–70 µg","Kupfer":"≈ 1 mg","Mangan":"2–5 mg"},
+    fatty:    {"Omega-3":"2–3 g","Omega-6":"≈ 10 g"}
   }
 };
 
@@ -363,13 +394,13 @@ const SECTIONS = [
 ];
 
 const DEFAULT_MEAL_PLAN = [
-  {day:"Montag",    yvonne:{breakfast:"200g Sojajoghurt, 50g Hafer, Beeren, 1 TL Leinsamen",lunch:"1 Wrap, Hummus, Kichererbsen, Gemüse",dinner:"150g Tofu, Reis 70g, Brokkoli, Karotten"},    luca:{breakfast:"300g Sojajoghurt, 80g Hafer, Beeren, 1 EL Leinsamen",lunch:"2 Wraps, Hummus, Kichererbsen, Gemüse",dinner:"250g Tofu, Reis 120g, Brokkoli, Karotten"}},
-  {day:"Dienstag",  yvonne:{breakfast:"Banane, Sojamilch 250ml, Beeren, 25g Hafer",lunch:"70g Quinoa, Kichererbsen, Paprika, Spinat",dinner:"250g Kartoffeln, Kidneybohnen, Salat"},             luca:{breakfast:"Banane, Sojamilch 350ml, Beeren, 40g Hafer",lunch:"120g Quinoa, Kichererbsen, Paprika, Spinat",dinner:"400g Kartoffeln, Kidneybohnen, Salat"}},
-  {day:"Mittwoch",  yvonne:{breakfast:"2 Scheiben Brot, Erdnussmus, Banane",lunch:"140g Linsen, Tomaten, Gurke",dinner:"150g Tofu, Reis 70g, Gemüse"},                                          luca:{breakfast:"3 Scheiben Brot, Erdnussmus, Banane",lunch:"200g Linsen, Tomaten, Gurke, Olivenöl",dinner:"250g Tofu, Reis 110g, Gemüse"}},
-  {day:"Donnerstag",yvonne:{breakfast:"200g Sojajoghurt, kleine Portion Nüsse, Beeren",lunch:"1 Wrap, Falafel, Tahini, Salat",dinner:"Edamame 130g, Reis 70g, Gemüse"},                         luca:{breakfast:"300g Sojajoghurt, Walnüsse, Beeren",lunch:"2 Wraps, Falafel, Tahini, Salat",dinner:"Edamame 200g, Reis 110g, Gemüse"}},
-  {day:"Freitag",   yvonne:{breakfast:"Sojamilch 250ml, Banane, Beeren",lunch:"1 Wrap, Kidneybohnen, Avocado, Salat",dinner:"160g Linsen Dal, Reis 70g"},                                      luca:{breakfast:"Sojamilch 350ml, Banane, Beeren, Mandeln",lunch:"2 Wraps, Kidneybohnen, Avocado, Salat",dinner:"250g Linsen Dal, Reis 110g"}},
-  {day:"Samstag",   yvonne:{breakfast:"2 Scheiben Brot, Avocado, Tomaten",lunch:"70g Quinoa, Tofu, Brokkoli",dinner:"150g Tofu, Kartoffeln 200g, Gemüse"},                                     luca:{breakfast:"3 Scheiben Brot, Avocado, Tomaten",lunch:"120g Quinoa, Tofu, Brokkoli, Tahini",dinner:"250g Tofu, Kartoffeln 300g, Gemüse"}},
-  {day:"Sonntag",   yvonne:{breakfast:"200g Sojajoghurt, Beeren",lunch:"Falafel, Vollkornbrot 1x, Salat",dinner:"160g Chili, Reis 70g"},                                                       luca:{breakfast:"300g Sojajoghurt, Beeren, Chiasamen",lunch:"Falafel, Vollkornbrot 2x, Salat",dinner:"250g Chili, Reis 110g"}}
+  {day:"Montag",    yvonne:{breakfast:"200g Sojajoghurt, 50g Hafer, Beeren, 1 TL Leinsamen",lunch:"1 Wrap, Hummus, Kichererbsen, Gemüse",dinner:"150g Tofu, Reis 70g, Brokkoli, Karotten"},    luca:{breakfast:"300g Sojajoghurt, 80g Hafer, Beeren, 1 EL Leinsamen",lunch:"2 Wraps, Hummus, Kichererbsen, Gemüse",dinner:"250g Tofu, Reis 120g, Brokkoli, Karotten"},    alex:{breakfast:"200g Sojajoghurt, 40g Hafer, Beeren, 1 EL Leinsamen",lunch:"1 Wrap, Hummus, Kichererbsen, Gemüse (kein Käse)",dinner:"200g Tofu, Reis 60g, Brokkoli, Karotten"}},
+  {day:"Dienstag",  yvonne:{breakfast:"Banane, Sojamilch 250ml, Beeren, 25g Hafer",lunch:"70g Quinoa, Kichererbsen, Paprika, Spinat",dinner:"250g Kartoffeln, Kidneybohnen, Salat"},             luca:{breakfast:"Banane, Sojamilch 350ml, Beeren, 40g Hafer",lunch:"120g Quinoa, Kichererbsen, Paprika, Spinat",dinner:"400g Kartoffeln, Kidneybohnen, Salat"},             alex:{breakfast:"Banane, Sojamilch 250ml, Beeren, 30g Hafer",lunch:"80g Quinoa, Kichererbsen, Paprika, Spinat",dinner:"250g Kartoffeln, Kidneybohnen, Salat (kein Öl)"}},
+  {day:"Mittwoch",  yvonne:{breakfast:"2 Scheiben Brot, Erdnussmus, Banane",lunch:"140g Linsen, Tomaten, Gurke",dinner:"150g Tofu, Reis 70g, Gemüse"},                                          luca:{breakfast:"3 Scheiben Brot, Erdnussmus, Banane",lunch:"200g Linsen, Tomaten, Gurke, Olivenöl",dinner:"250g Tofu, Reis 110g, Gemüse"},                                          alex:{breakfast:"2 Scheiben Brot, Erdnussmus, Banane",lunch:"150g Linsen, Tomaten, Gurke",dinner:"200g Tofu, Reis 60g, Gemüse"}},
+  {day:"Donnerstag",yvonne:{breakfast:"200g Sojajoghurt, kleine Portion Nüsse, Beeren",lunch:"1 Wrap, Falafel, Tahini, Salat",dinner:"Edamame 130g, Reis 70g, Gemüse"},                         luca:{breakfast:"300g Sojajoghurt, Walnüsse, Beeren",lunch:"2 Wraps, Falafel, Tahini, Salat",dinner:"Edamame 200g, Reis 110g, Gemüse"},                         alex:{breakfast:"200g Sojajoghurt, Mandeln 20g, Beeren",lunch:"1 Wrap, Falafel, Tahini, Salat",dinner:"Edamame 150g, Reis 60g, Gemüse"}},
+  {day:"Freitag",   yvonne:{breakfast:"Sojamilch 250ml, Banane, Beeren",lunch:"1 Wrap, Kidneybohnen, Avocado, Salat",dinner:"160g Linsen Dal, Reis 70g"},                                      luca:{breakfast:"Sojamilch 350ml, Banane, Beeren, Mandeln",lunch:"2 Wraps, Kidneybohnen, Avocado, Salat",dinner:"250g Linsen Dal, Reis 110g"},                                      alex:{breakfast:"Sojamilch 250ml, Banane, Beeren",lunch:"1 Wrap, Kidneybohnen, ½ Avocado, Salat",dinner:"180g Linsen Dal, Reis 60g"}},
+  {day:"Samstag",   yvonne:{breakfast:"2 Scheiben Brot, Avocado, Tomaten",lunch:"70g Quinoa, Tofu, Brokkoli",dinner:"150g Tofu, Kartoffeln 200g, Gemüse"},                                     luca:{breakfast:"3 Scheiben Brot, Avocado, Tomaten",lunch:"120g Quinoa, Tofu, Brokkoli, Tahini",dinner:"250g Tofu, Kartoffeln 300g, Gemüse"},                                     alex:{breakfast:"2 Scheiben Brot, ½ Avocado, Tomaten",lunch:"80g Quinoa, Tofu, Brokkoli",dinner:"200g Tofu, Kartoffeln 200g, Gemüse"}},
+  {day:"Sonntag",   yvonne:{breakfast:"200g Sojajoghurt, Beeren",lunch:"Falafel, Vollkornbrot 1x, Salat",dinner:"160g Chili, Reis 70g"},                                                       luca:{breakfast:"300g Sojajoghurt, Beeren, Chiasamen",lunch:"Falafel, Vollkornbrot 2x, Salat",dinner:"250g Chili, Reis 110g"},                                                       alex:{breakfast:"200g Sojajoghurt, Beeren, Chiasamen",lunch:"Falafel, Vollkornbrot 1x, Salat",dinner:"180g Chili, Reis 60g"}}
 ];
 
 const MEAL_SLOTS = [
@@ -441,7 +472,7 @@ async function saveMealPlan() {
 function diaryDocId(pid, date) { return `${pid}_${date}`; }
 
 async function loadDiaryDay(date) {
-  for (const pid of ["yvonne","luca"]) {
+  for (const pid of ["yvonne","luca","alex"]) {
     try {
       const snap = await getDoc(doc(db, "diary", diaryDocId(pid, date)));
       if (snap.exists()) {
@@ -482,7 +513,8 @@ document.querySelectorAll(".nav-btn").forEach(btn => {
 let nutritionPersonId = "yvonne";
 const AVATAR_SVG = {
   yvonne:`<svg width="26" height="26" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="22" r="14" fill="#C9A96E" opacity="0.9"/><ellipse cx="40" cy="58" rx="18" ry="22" fill="#C9A96E" opacity="0.75"/><path d="M26 18 Q28 8 40 8 Q52 8 54 18" stroke="#C9A96E" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M26 18 Q22 22 24 28" stroke="#C9A96E" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M54 18 Q58 22 56 28" stroke="#C9A96E" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>`,
-  luca: `<svg width="26" height="26" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="20" r="14" fill="#7EB8C9" opacity="0.9"/><rect x="22" y="36" width="36" height="28" rx="6" fill="#7EB8C9" opacity="0.75"/><rect x="13" y="38" width="11" height="22" rx="5" fill="#7EB8C9" opacity="0.5"/><rect x="56" y="38" width="11" height="22" rx="5" fill="#7EB8C9" opacity="0.5"/><rect x="28" y="64" width="10" height="16" rx="5" fill="#7EB8C9" opacity="0.5"/><rect x="42" y="64" width="10" height="16" rx="5" fill="#7EB8C9" opacity="0.5"/></svg>`
+  luca: `<svg width="26" height="26" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="20" r="14" fill="#7EB8C9" opacity="0.9"/><rect x="22" y="36" width="36" height="28" rx="6" fill="#7EB8C9" opacity="0.75"/><rect x="13" y="38" width="11" height="22" rx="5" fill="#7EB8C9" opacity="0.5"/><rect x="56" y="38" width="11" height="22" rx="5" fill="#7EB8C9" opacity="0.5"/><rect x="28" y="64" width="10" height="16" rx="5" fill="#7EB8C9" opacity="0.5"/><rect x="42" y="64" width="10" height="16" rx="5" fill="#7EB8C9" opacity="0.5"/></svg>`,
+  alex: `<svg width="26" height="26" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="20" r="14" fill="#A0D278" opacity="0.9"/><rect x="23" y="36" width="34" height="26" rx="6" fill="#A0D278" opacity="0.75"/><rect x="14" y="38" width="11" height="20" rx="5" fill="#A0D278" opacity="0.5"/><rect x="55" y="38" width="11" height="20" rx="5" fill="#A0D278" opacity="0.5"/><rect x="29" y="62" width="10" height="15" rx="5" fill="#A0D278" opacity="0.5"/><rect x="41" y="62" width="10" height="15" rx="5" fill="#A0D278" opacity="0.5"/></svg>`
 };
 
 function openNutrition(pid) {
@@ -502,6 +534,7 @@ function closeNutrition() {
 }
 document.getElementById("card-yvonne").addEventListener("click", () => openNutrition("yvonne"));
 document.getElementById("card-luca").addEventListener("click",   () => openNutrition("luca"));
+document.getElementById("card-alex").addEventListener("click",   () => openNutrition("alex"));
 document.getElementById("back-from-nutrition").addEventListener("click", closeNutrition);
 
 function renderNutritionSections() {
@@ -539,7 +572,7 @@ function renderMealPlan() {
       <div class="day-content" id="day-content-${di}">`;
     Object.entries(MEAL_LABELS).forEach(([mkey, mlabel]) => {
       html += `<div class="meal-section"><div class="meal-label-row">${mlabel}</div><div class="meal-grid">`;
-      ["yvonne","luca"].forEach(pid => {
+      ["yvonne","luca","alex"].forEach(pid => {
         const p = PERSONS[pid];
         html += `<div class="meal-cell" style="background:${p.color}0D;border:1px solid ${p.color}25" id="cell-${di}-${pid}-${mkey}">
           <div class="meal-cell-name" style="color:${p.color}">${p.name}</div>
@@ -604,21 +637,23 @@ function renderDiary() {
   MEAL_SLOTS.forEach(slot => {
     const yEntries = (diaryData[`yvonne|${diaryDate}`] || {})[slot.key] || [];
     const lEntries = (diaryData[`luca|${diaryDate}`]   || {})[slot.key] || [];
+    const aEntries = (diaryData[`alex|${diaryDate}`]   || {})[slot.key] || [];
     const yAdding  = activeSlotInput?.pid==="yvonne" && activeSlotInput?.key===slot.key;
     const lAdding  = activeSlotInput?.pid==="luca"   && activeSlotInput?.key===slot.key;
+    const aAdding  = activeSlotInput?.pid==="alex"   && activeSlotInput?.key===slot.key;
 
     html += `<div style="margin-bottom:14px;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden">`;
     html += `<div style="display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.06)">
       <span style="font-size:15px">${slot.icon}</span>
       <span style="font-size:12px;color:#666;letter-spacing:1px;text-transform:uppercase">${slot.label}</span>
     </div>`;
-    html += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">`;
+    html += `<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">`;
 
-    ["yvonne","luca"].forEach((pid, ci) => {
+    ["yvonne","luca","alex"].forEach((pid, ci) => {
       const p        = PERSONS[pid];
-      const entries  = pid==="yvonne" ? yEntries : lEntries;
-      const isAdding = pid==="yvonne" ? yAdding  : lAdding;
-      const bl       = ci===1 ? "border-left:1px solid rgba(255,255,255,0.05)" : "";
+      const entries  = pid==="yvonne" ? yEntries : pid==="luca" ? lEntries : aEntries;
+      const isAdding = pid==="yvonne" ? yAdding  : pid==="luca" ? lAdding  : aAdding;
+      const bl       = ci>0 ? "border-left:1px solid rgba(255,255,255,0.05)" : "";
 
       html += `<div style="padding:10px 12px;${bl}">`;
       html += `<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
