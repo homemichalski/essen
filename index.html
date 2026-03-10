@@ -158,6 +158,89 @@
     .date-sub { font-size: 10px; color: #444; margin-top: 1px; }
     .empty-state { text-align: center; padding: 30px 0; color: #333; font-size: 13px; line-height: 2; }
 
+    /* ── Health Panel ── */
+    #health-section { padding: 0 16px 0; }
+    .health-tab {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px; padding: 6px 14px; font-size: 12px; font-weight: 500;
+      cursor: pointer; font-family: "DM Sans", sans-serif; transition: all 0.2s;
+    }
+    .health-tab.active { background: rgba(255,255,255,0.07); }
+    .health-cat { margin-bottom: 14px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; overflow: hidden; }
+    .health-cat-head { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer; }
+    .health-cat-icon { font-size: 13px; }
+    .health-cat-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #666; }
+    .health-cat-body { padding: 8px 14px 10px; }
+    .health-row { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+    .health-row:last-child { border-bottom: none; }
+    .health-row-name { font-size: 12px; color: #888; width: 110px; flex-shrink: 0; }
+    .health-row-bar { flex: 1; height: 4px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
+    .health-row-fill { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
+    .health-row-val { font-size: 11px; color: #666; width: 60px; text-align: right; flex-shrink: 0; }
+    .health-row-pct { font-size: 11px; font-weight: 600; width: 36px; text-align: right; flex-shrink: 0; }
+    .health-no-data { font-size: 12px; color: #333; padding: 12px 0; text-align: center; }
+
+    /* ── Kalorienzähler (legacy – kept for sync button) ── */
+    /* ── Kalorienzähler (legacy) ── */
+    .kcal-bar-wrap { margin: 0 16px 20px; }
+    .kcal-bar-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 16px 18px; margin-bottom: 10px;
+    }
+    .kcal-bar-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .kcal-bar-name { display: flex; align-items: center; gap: 8px; }
+    .kcal-bar-label { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 15px; font-weight: 600; }
+    .kcal-bar-nums { font-size: 12px; color: #666; }
+    .kcal-bar-nums span { font-weight: 600; }
+    .kcal-track { height: 6px; background: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden; }
+    .kcal-fill { height: 100%; border-radius: 10px; transition: width 0.6s cubic-bezier(.4,0,.2,1); }
+    .kcal-status { font-size: 10px; letter-spacing: 0.8px; margin-top: 7px; text-transform: uppercase; }
+    .kcal-sync-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0 0; }
+    .kcal-sync-info { font-size: 11px; color: #444; }
+    .kcal-sync-btn {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 6px 14px; color: #888; cursor: pointer;
+      font-size: 11px; letter-spacing: 0.5px; font-family: 'DM Sans', sans-serif;
+      transition: all 0.2s;
+    }
+    .kcal-sync-btn:active { transform: scale(0.96); }
+
+    /* ── Health Dashboard ── */
+    .health-tab {
+      flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; padding: 8px 4px; cursor: pointer; font-size: 12px;
+      font-family: 'DM Sans', sans-serif; transition: all 0.2s;
+    }
+    .health-tab.active { background: rgba(255,255,255,0.07); }
+    .health-section-head {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #555;
+      padding: 14px 0 8px; border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 4px;
+    }
+    .nutrient-row {
+      display: flex; align-items: center; gap: 8px;
+      padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .nutrient-name { flex: 1; font-size: 12px; color: #888; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .nutrient-val  { font-size: 12px; color: #C8C4BC; min-width: 70px; text-align: right; flex-shrink: 0; }
+    .nutrient-pct  { font-size: 11px; font-weight: 600; min-width: 36px; text-align: right; flex-shrink: 0; }
+    .nutrient-bar-wrap { width: 52px; flex-shrink: 0; }
+    .nutrient-bar-track { height: 4px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
+    .nutrient-bar-fill  { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
+    .health-empty { text-align: center; padding: 24px 0; color: #333; font-size: 12px; line-height: 2; }
+    .health-sync-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 2px 16px; }
+    .health-sync-info { font-size: 11px; color: #444; }
+    .health-sync-btn {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 6px 14px; color: #888; cursor: pointer;
+      font-size: 11px; letter-spacing: 0.5px; font-family: 'DM Sans', sans-serif;
+    }
+    .health-panel { animation: fadeSlide 0.3s ease both; }
+
     /* ── Animations ── */
     @keyframes fadeSlide { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
     @keyframes slideUp   { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
@@ -331,6 +414,31 @@
         </div>
         <button class="date-nav-btn" id="date-next">›</button>
       </div>
+      <!-- Health Nährstoff-Übersicht -->
+      <div id="health-section" style="margin-bottom:24px">
+        <div style="display:flex;gap:8px;margin-bottom:14px;align-items:center">
+          <button class="health-tab active" data-pid="yvonne" onclick="window.switchHealthTab('yvonne')">
+            <svg width="13" height="13" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="22" r="14" fill="#C9A96E"/><ellipse cx="40" cy="58" rx="18" ry="22" fill="#C9A96E" opacity="0.8"/></svg>
+            <span>Yvonne</span>
+          </button>
+          <button class="health-tab" data-pid="luca" onclick="window.switchHealthTab('luca')">
+            <svg width="13" height="13" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="20" r="14" fill="#7EB8C9"/><rect x="22" y="36" width="36" height="28" rx="6" fill="#7EB8C9" opacity="0.8"/></svg>
+            <span>Luca</span>
+          </button>
+          <button class="health-tab" data-pid="alex" onclick="window.switchHealthTab('alex')">
+            <svg width="13" height="13" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="20" r="14" fill="#A0D278"/><rect x="23" y="36" width="34" height="26" rx="6" fill="#A0D278" opacity="0.8"/></svg>
+            <span>Alex</span>
+          </button>
+          <button class="health-sync-btn" style="margin-left:auto;padding:5px 12px;font-size:13px" onclick="window.refreshHealth()">↻</button>
+        </div>
+        <div id="health-panel-yvonne" class="health-panel"></div>
+        <div id="health-panel-luca"   class="health-panel" style="display:none"></div>
+        <div id="health-panel-alex"   class="health-panel" style="display:none"></div>
+        <div class="health-sync-row">
+          <span class="health-sync-info" id="health-last-sync">Zuletzt synchronisiert: –</span>
+        </div>
+      </div>
+
       <div id="diary-slots"></div>
     </div>
   </div>
@@ -732,8 +840,9 @@ window.deleteEntry = async function(pid, key, idx) {
 document.getElementById("date-prev").addEventListener("click", async () => {
   diaryDate = shiftDate(diaryDate, -1);
   activeSlotInput = null;
-  await loadDiaryDay(diaryDate);
+  await Promise.all([loadDiaryDay(diaryDate), loadHealthDay(diaryDate)]);
   renderDiary();
+  renderHealthPanel();
 });
 document.getElementById("date-next").addEventListener("click", async () => {
   diaryDate = shiftDate(diaryDate, 1);
@@ -742,16 +851,428 @@ document.getElementById("date-next").addEventListener("click", async () => {
   renderDiary();
 });
 
+
+// ══════════════════════════════════════════════════════
+// HEALTH — Apple Health via Shortcut → Firebase
+// Alle Nährstoffe mit Tageszielen und % Fortschritt
+// ══════════════════════════════════════════════════════
+
+// ── Tages-Ziele pro Person ──
+const HEALTH_GOALS = {
+  yvonne: {
+    // Makros
+    kcal: 1750, protein: 80, fat: 55, carbs: 200, fiber: 35, water: 2200,
+    // Vitamine (mg/µg)
+    vitA: 800, vitC: 100, vitD: 20, vitE: 13, vitK: 70,
+    vitB1: 1.2, vitB2: 1.3, vitB3: 16, vitB5: 5, vitB6: 1.4, vitB12: 4, biotin: 40, folate: 300,
+    // Mineralstoffe (mg)
+    calcium: 1000, magnesium: 350, phosphorus: 700, potassium: 4000, sodium: 1500,
+    // Spurenelemente (mg/µg)
+    iron: 12, zinc: 10, iodine: 150, selenium: 65, copper: 1, manganese: 3,
+    // Fette
+    omega3: 1500, omega6: 10000
+  },
+  luca: {
+    kcal: 2700, protein: 100, fat: 80, carbs: 350, fiber: 40, water: 2700,
+    vitA: 800, vitC: 100, vitD: 20, vitE: 13, vitK: 70,
+    vitB1: 1.2, vitB2: 1.3, vitB3: 16, vitB5: 5, vitB6: 1.4, vitB12: 4, biotin: 40, folate: 300,
+    calcium: 1000, magnesium: 350, phosphorus: 700, potassium: 4000, sodium: 1500,
+    iron: 10, zinc: 10, iodine: 150, selenium: 65, copper: 1, manganese: 3,
+    omega3: 1500, omega6: 10000
+  },
+  alex: {
+    kcal: 2100, protein: 140, fat: 62, carbs: 200, fiber: 35, water: 2700,
+    vitA: 800, vitC: 100, vitD: 20, vitE: 13, vitK: 70,
+    vitB1: 1.2, vitB2: 1.3, vitB3: 16, vitB5: 5, vitB6: 1.6, vitB12: 4, biotin: 40, folate: 300,
+    calcium: 1000, magnesium: 400, phosphorus: 700, potassium: 4000, sodium: 1500,
+    iron: 10, zinc: 12, iodine: 150, selenium: 65, copper: 1, manganese: 3,
+    omega3: 2000, omega6: 10000
+  }
+};
+
+// ── Kategorien & Anzeige-Konfiguration ──
+const HEALTH_CATS = [
+  { id: "macros", label: "Makronährstoffe", icon: "⚡", fields: [
+    { key: "kcal",    label: "Kalorien",      unit: "kcal", decimals: 0 },
+    { key: "protein", label: "Protein",        unit: "g",    decimals: 1 },
+    { key: "carbs",   label: "Kohlenhydrate",  unit: "g",    decimals: 1 },
+    { key: "fat",     label: "Fett",           unit: "g",    decimals: 1 },
+    { key: "fiber",   label: "Ballaststoffe",  unit: "g",    decimals: 1 },
+    { key: "water",   label: "Wasser",         unit: "ml",   decimals: 0 },
+  ]},
+  { id: "vitamins", label: "Vitamine", icon: "✦", fields: [
+    { key: "vitA",   label: "Vitamin A",   unit: "µg", decimals: 0 },
+    { key: "vitC",   label: "Vitamin C",   unit: "mg", decimals: 1 },
+    { key: "vitD",   label: "Vitamin D",   unit: "µg", decimals: 1 },
+    { key: "vitE",   label: "Vitamin E",   unit: "mg", decimals: 1 },
+    { key: "vitK",   label: "Vitamin K",   unit: "µg", decimals: 1 },
+    { key: "vitB1",  label: "Vitamin B1",  unit: "mg", decimals: 2 },
+    { key: "vitB2",  label: "Vitamin B2",  unit: "mg", decimals: 2 },
+    { key: "vitB3",  label: "Vitamin B3",  unit: "mg", decimals: 1 },
+    { key: "vitB5",  label: "Vitamin B5",  unit: "mg", decimals: 1 },
+    { key: "vitB6",  label: "Vitamin B6",  unit: "mg", decimals: 2 },
+    { key: "vitB12", label: "Vitamin B12", unit: "µg", decimals: 1 },
+    { key: "biotin", label: "Biotin",      unit: "µg", decimals: 1 },
+    { key: "folate", label: "Folat",       unit: "µg", decimals: 0 },
+  ]},
+  { id: "minerals", label: "Mineralstoffe", icon: "◈", fields: [
+    { key: "calcium",    label: "Calcium",    unit: "mg", decimals: 0 },
+    { key: "magnesium",  label: "Magnesium",  unit: "mg", decimals: 0 },
+    { key: "phosphorus", label: "Phosphor",   unit: "mg", decimals: 0 },
+    { key: "potassium",  label: "Kalium",     unit: "mg", decimals: 0 },
+    { key: "sodium",     label: "Natrium",    unit: "mg", decimals: 0 },
+  ]},
+  { id: "trace", label: "Spurenelemente", icon: "◇", fields: [
+    { key: "iron",      label: "Eisen",    unit: "mg", decimals: 1 },
+    { key: "zinc",      label: "Zink",     unit: "mg", decimals: 1 },
+    { key: "iodine",    label: "Jod",      unit: "µg", decimals: 0 },
+    { key: "selenium",  label: "Selen",    unit: "µg", decimals: 0 },
+    { key: "copper",    label: "Kupfer",   unit: "mg", decimals: 2 },
+    { key: "manganese", label: "Mangan",   unit: "mg", decimals: 1 },
+  ]},
+  { id: "fatty", label: "Fettsäuren", icon: "〜", fields: [
+    { key: "omega3", label: "Omega-3", unit: "mg", decimals: 0 },
+    { key: "omega6", label: "Omega-6", unit: "mg", decimals: 0 },
+  ]},
+];
+
+let healthData = {};       // { yvonne: { kcal: 1234, protein: 67, ... }, ... }
+let activeHealthPid = "yvonne";
+
+async function loadHealthDay(date) {
+  for (const pid of ["yvonne","luca","alex"]) {
+    try {
+      const snap = await getDoc(doc(db, "health", `${pid}_${date}`));
+      if (snap.exists()) healthData[pid] = snap.data();
+      else healthData[pid] = null;
+    } catch(e) { console.warn("Health load failed", e); }
+  }
+}
+
+function pctColor(pct, personColor) {
+  if (pct >= 100) return "#A0D278";   // grün = erreicht
+  if (pct >= 60)  return personColor; // personfarbe = auf dem Weg
+  if (pct >= 30)  return "#C9A96E";   // gold = niedrig
+  return "#666";                       // grau = kaum Daten
+}
+
+function renderHealthPanel() {
+  const isToday = diaryDate === todayKey();
+  const section = document.getElementById("health-section");
+  section.style.display = "block";
+
+  const pid   = activeHealthPid;
+  const p     = PERSONS[pid];
+  const goals = HEALTH_GOALS[pid];
+  const data  = healthData[pid];
+
+  // Update tab highlight colors
+  document.querySelectorAll(".health-tab").forEach(btn => {
+    const bp = btn.dataset.pid;
+    const bp_color = PERSONS[bp].color;
+    if (bp === pid) {
+      btn.style.color = bp_color;
+      btn.style.borderColor = bp_color + "55";
+      btn.style.background = bp_color + "15";
+    } else {
+      btn.style.color = "#555";
+      btn.style.borderColor = "rgba(255,255,255,0.1)";
+      btn.style.background = "rgba(255,255,255,0.03)";
+    }
+  });
+
+  ["yvonne","luca","alex"].forEach(id => {
+    document.getElementById(`health-panel-${id}`).style.display = id === pid ? "block" : "none";
+  });
+
+  const panel = document.getElementById(`health-panel-${pid}`);
+
+  if (!data) {
+    panel.innerHTML = `<div class="health-no-data">Noch keine Health-Daten für ${isToday ? "heute" : formatDE(diaryDate)}.<br><span style="font-size:11px;color:#444">Shortcut ausführen um Daten zu laden.</span></div>`;
+    updateSyncTime();
+    return;
+  }
+
+  let html = "";
+  HEALTH_CATS.forEach(cat => {
+    const hasAny = cat.fields.some(f => data[f.key] != null && data[f.key] > 0);
+    html += `<div class="health-cat">`;
+    html += `<div class="health-cat-head"><span class="health-cat-icon">${cat.icon}</span><span class="health-cat-label">${cat.label}</span></div>`;
+    html += `<div class="health-cat-body">`;
+    if (!hasAny) {
+      html += `<div class="health-no-data">Keine Daten</div>`;
+    } else {
+      cat.fields.forEach(f => {
+        const val  = data[f.key] ?? 0;
+        const goal = goals[f.key] ?? 1;
+        const pct  = Math.min(120, Math.round((val / goal) * 100));
+        const displayVal = val === 0 ? "–" : val.toFixed(f.decimals) + " " + f.unit;
+        const pctDisplay = val === 0 ? "" : (pct > 120 ? ">120%" : pct + "%");
+        const color = val === 0 ? "#444" : pctColor(pct, p.color);
+        const barW  = val === 0 ? 0 : Math.min(100, pct);
+        html += `<div class="health-row">
+          <div class="health-row-name">${f.label}</div>
+          <div class="health-row-bar"><div class="health-row-fill" style="width:${barW}%;background:${color}"></div></div>
+          <div class="health-row-val" style="color:#999">${displayVal}</div>
+          <div class="health-row-pct" style="color:${color}">${pctDisplay}</div>
+        </div>`;
+      });
+    }
+    html += `</div></div>`;
+  });
+
+  panel.innerHTML = html;
+  updateSyncTime();
+}
+
+function updateSyncTime() {
+  const ts = Object.values(healthData).map(d => d?.ts).filter(Boolean).sort().pop();
+  document.getElementById("kcal-last-sync").textContent =
+    ts ? `Sync: ${new Date(ts).toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"})} Uhr` : "Noch nicht synchronisiert";
+}
+
+window.switchHealthTab = function(pid) {
+  activeHealthPid = pid;
+  renderHealthPanel();
+};
+
+window.refreshHealth = async function() {
+  await loadHealthDay(diaryDate);
+  renderHealthPanel();
+};
+
+// backwards compat alias
+window.refreshKcal = window.refreshHealth;
+
+// ── Public endpoint for Shortcut ──
+// PATCH https://firestore.googleapis.com/v1/projects/essen-e4699/databases/(default)/documents/health/{pid}_{date}
+// Body fields: kcal(int), protein, fat, carbs, fiber, water, vitA, vitC, vitD, vitE, vitK,
+//              vitB1..vitB12, biotin, folate, calcium, magnesium, phosphorus, potassium, sodium,
+//              iron, zinc, iodine, selenium, copper, manganese, omega3, omega6, ts(string)
+// All numeric values as doubleValue except kcal (integerValue). ts = ISO timestamp string.
+
 // ══════════════════════════════════════════════════════
 // INIT — load data, then render
 // ══════════════════════════════════════════════════════
 async function init() {
   await Promise.all([
     loadMealPlan(),
-    loadDiaryDay(diaryDate)
+    loadDiaryDay(diaryDate),
+    loadHealthDay(diaryDate)
   ]);
   renderMealPlan();
   renderDiary();
+  renderHealthPanel();
+  document.getElementById("loading-screen").style.display = "none";
+}
+
+init();
+</script>
+</body>
+</html>
+// ══════════════════════════════════════════════════════
+// HEALTH — Alle Nährstoffe via Shortcut → Firebase
+// ══════════════════════════════════════════════════════
+
+// ── Tagesziele pro Person ──────────────────────────────
+const HEALTH_GOALS = {
+  yvonne: {
+    // Makros
+    kcal: 1750, protein: 80, fat: 55, carbs: 200, fiber: 35, water: 2200,
+    // Vitamine
+    vitA: 800, vitD: 20, vitE: 13, vitK: 70, vitC: 100,
+    vitB1: 1.2, vitB2: 1.3, vitB3: 16, vitB5: 5, vitB6: 1.4, biotin: 40, folate: 300, vitB12: 4,
+    // Mineralstoffe
+    calcium: 1000, magnesium: 350, phosphorus: 700, potassium: 4000, sodium: 1500,
+    // Spurenelemente
+    iron: 12, zinc: 10, iodine: 150, selenium: 65, copper: 1, manganese: 3.5,
+    // Fettsäuren
+    omega3: 1.5, omega6: 10
+  },
+  luca: {
+    kcal: 2700, protein: 100, fat: 80, carbs: 350, fiber: 40, water: 2500,
+    vitA: 800, vitD: 20, vitE: 13, vitK: 70, vitC: 100,
+    vitB1: 1.2, vitB2: 1.3, vitB3: 16, vitB5: 5, vitB6: 1.4, biotin: 40, folate: 300, vitB12: 4,
+    calcium: 1000, magnesium: 350, phosphorus: 700, potassium: 4000, sodium: 1500,
+    iron: 12, zinc: 10, iodine: 150, selenium: 65, copper: 1, manganese: 3.5,
+    omega3: 1.5, omega6: 10
+  },
+  alex: {
+    kcal: 2100, protein: 140, fat: 62, carbs: 200, fiber: 35, water: 2750,
+    vitA: 800, vitD: 20, vitE: 13, vitK: 70, vitC: 100,
+    vitB1: 1.2, vitB2: 1.3, vitB3: 16, vitB5: 5, vitB6: 1.6, biotin: 40, folate: 300, vitB12: 4,
+    calcium: 1000, magnesium: 400, phosphorus: 700, potassium: 4000, sodium: 1500,
+    iron: 12, zinc: 12, iodine: 150, selenium: 65, copper: 1, manganese: 3.5,
+    omega3: 2.5, omega6: 10
+  }
+};
+
+// ── Kategorien & Anzeige-Definitionen ─────────────────
+const HEALTH_CATS = [
+  { id: "makros", label: "Makronährstoffe", icon: "⚡", nutrients: [
+    { key:"kcal",       label:"Kalorien",       unit:"kcal", decimals:0 },
+    { key:"protein",    label:"Protein",        unit:"g",    decimals:1 },
+    { key:"fat",        label:"Fett",           unit:"g",    decimals:1 },
+    { key:"carbs",      label:"Kohlenhydrate",  unit:"g",    decimals:1 },
+    { key:"fiber",      label:"Ballaststoffe",  unit:"g",    decimals:1 },
+    { key:"water",      label:"Wasser",         unit:"ml",   decimals:0 }
+  ]},
+  { id: "vitamine", label: "Vitamine", icon: "✦", nutrients: [
+    { key:"vitA",   label:"Vitamin A",   unit:"µg",  decimals:0 },
+    { key:"vitD",   label:"Vitamin D",   unit:"µg",  decimals:0 },
+    { key:"vitE",   label:"Vitamin E",   unit:"mg",  decimals:1 },
+    { key:"vitK",   label:"Vitamin K",   unit:"µg",  decimals:0 },
+    { key:"vitC",   label:"Vitamin C",   unit:"mg",  decimals:0 },
+    { key:"vitB1",  label:"Vitamin B1",  unit:"mg",  decimals:2 },
+    { key:"vitB2",  label:"Vitamin B2",  unit:"mg",  decimals:2 },
+    { key:"vitB3",  label:"Vitamin B3",  unit:"mg",  decimals:1 },
+    { key:"vitB5",  label:"Vitamin B5",  unit:"mg",  decimals:1 },
+    { key:"vitB6",  label:"Vitamin B6",  unit:"mg",  decimals:2 },
+    { key:"biotin", label:"Biotin",      unit:"µg",  decimals:0 },
+    { key:"folate", label:"Folat",       unit:"µg",  decimals:0 },
+    { key:"vitB12", label:"Vitamin B12", unit:"µg",  decimals:1 }
+  ]},
+  { id: "minerale", label: "Mineralstoffe", icon: "◈", nutrients: [
+    { key:"calcium",    label:"Calcium",    unit:"mg", decimals:0 },
+    { key:"magnesium",  label:"Magnesium",  unit:"mg", decimals:0 },
+    { key:"phosphorus", label:"Phosphor",   unit:"mg", decimals:0 },
+    { key:"potassium",  label:"Kalium",     unit:"mg", decimals:0 },
+    { key:"sodium",     label:"Natrium",    unit:"mg", decimals:0 }
+  ]},
+  { id: "spuren", label: "Spurenelemente", icon: "◇", nutrients: [
+    { key:"iron",      label:"Eisen",    unit:"mg", decimals:1 },
+    { key:"zinc",      label:"Zink",     unit:"mg", decimals:1 },
+    { key:"iodine",    label:"Jod",      unit:"µg", decimals:0 },
+    { key:"selenium",  label:"Selen",    unit:"µg", decimals:0 },
+    { key:"copper",    label:"Kupfer",   unit:"mg", decimals:2 },
+    { key:"manganese", label:"Mangan",   unit:"mg", decimals:1 }
+  ]},
+  { id: "fette", label: "Fettsäuren", icon: "〜", nutrients: [
+    { key:"omega3", label:"Omega-3", unit:"g", decimals:1 },
+    { key:"omega6", label:"Omega-6", unit:"g", decimals:1 }
+  ]}
+];
+
+// ── State ──────────────────────────────────────────────
+let healthData    = {};     // { "yvonne_2026-03-10": { kcal:1243, protein:67, ... } }
+let healthTabPid  = "yvonne";
+
+// ── Firebase Load ──────────────────────────────────────
+async function loadHealthDay(date) {
+  for (const pid of ["yvonne","luca","alex"]) {
+    const key = `${pid}_${date}`;
+    try {
+      const snap = await getDoc(doc(db, "health", key));
+      if (snap.exists()) healthData[key] = snap.data();
+    } catch(e) { console.warn("Health load failed", e); }
+  }
+  renderHealthPanel(healthTabPid);
+  updateHealthSync();
+}
+
+// ── Render ─────────────────────────────────────────────
+function renderHealthPanel(pid) {
+  const key  = `${pid}_${diaryDate}`;
+  const data = healthData[key] || {};
+  const goals = HEALTH_GOALS[pid];
+  const color = PERSONS[pid].color;
+  const hasAny = Object.keys(data).length > 0;
+
+  const panel = document.getElementById(`health-panel-${pid}`);
+  if (!panel) return;
+
+  if (!hasAny) {
+    panel.innerHTML = `<div class="health-empty">
+      Noch keine Daten für diesen Tag.<br>
+      <span style="font-size:11px;color:#2a2a2a">Shortcut ausführen um Apple Health zu synchronisieren</span>
+    </div>`;
+    return;
+  }
+
+  let html = "";
+  for (const cat of HEALTH_CATS) {
+    const rows = cat.nutrients.map(n => {
+      const val  = data[n.key];
+      if (val === undefined || val === null) return null;
+      const goal = goals[n.key];
+      const pct  = goal ? Math.min(150, Math.round((val / goal) * 100)) : null;
+      const pctCapped = pct !== null ? Math.min(100, pct) : 0;
+      // Color: green ≥80%, amber 50-79%, red <50%, purple >100%
+      let barColor = color;
+      let pctColor = color;
+      if (pct !== null) {
+        if (pct > 105)      { barColor = "#C9A96E"; pctColor = "#C9A96E"; }
+        else if (pct >= 80) { barColor = "#A0D278"; pctColor = "#A0D278"; }
+        else if (pct >= 50) { barColor = "#C9A96E"; pctColor = "#C9A96E"; }
+        else                { barColor = "#E87777"; pctColor = "#E87777"; }
+      }
+      const valStr = val.toFixed(n.decimals) + " " + n.unit;
+      const pctStr = pct !== null ? (pct > 105 ? `${pct}% ↑` : `${pct}%`) : "–";
+      return `<div class="nutrient-row">
+        <span class="nutrient-name">${n.label}</span>
+        <span class="nutrient-val">${valStr}</span>
+        <div class="nutrient-bar-wrap">
+          <div class="nutrient-bar-track">
+            <div class="nutrient-bar-fill" style="width:${pctCapped}%;background:${barColor}"></div>
+          </div>
+        </div>
+        <span class="nutrient-pct" style="color:${pctColor}">${pctStr}</span>
+      </div>`;
+    }).filter(Boolean);
+
+    if (rows.length === 0) continue;
+    html += `<div class="health-section-head">${cat.icon}&nbsp; ${cat.label}</div>`;
+    html += rows.join("");
+  }
+
+  panel.innerHTML = html || `<div class="health-empty">Keine Daten in dieser Kategorie.</div>`;
+}
+
+function updateHealthSync() {
+  const today = todayKey();
+  const ts = ["yvonne","luca","alex"]
+    .map(pid => healthData[`${pid}_${today}`]?.ts)
+    .filter(Boolean).sort().pop();
+  const el = document.getElementById("health-last-sync");
+  if (el) el.textContent = ts
+    ? `Zuletzt: ${new Date(ts).toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"})} Uhr`
+    : "Zuletzt synchronisiert: –";
+}
+
+window.switchHealthTab = function(pid) {
+  healthTabPid = pid;
+  document.querySelectorAll(".health-tab").forEach(b => {
+    const active = b.dataset.pid === pid;
+    b.classList.toggle("active", active);
+    const color = PERSONS[b.dataset.pid].color;
+    b.style.color  = active ? color : "#555";
+    b.style.borderColor = active ? color + "55" : "rgba(255,255,255,0.08)";
+  });
+  document.querySelectorAll(".health-panel").forEach(p => p.style.display = "none");
+  const panel = document.getElementById(`health-panel-${pid}`);
+  if (panel) { panel.style.display = "block"; renderHealthPanel(pid); }
+};
+
+window.refreshHealth = function() { loadHealthDay(diaryDate); };
+
+// ── Also hook date navigation ──────────────────────────
+// (handled in date nav listeners below by calling loadHealthDay)
+
+// legacy stub so old renderKcal calls don't crash
+function renderKcal() {}
+
+// ══════════════════════════════════════════════════════
+// INIT — load data, then render
+// ══════════════════════════════════════════════════════
+async function init() {
+  await Promise.all([
+    loadMealPlan(),
+    loadDiaryDay(diaryDate),
+    loadHealthDay(diaryDate)
+  ]);
+  renderMealPlan();
+  renderDiary();
+  renderHealthPanel();
   document.getElementById("loading-screen").style.display = "none";
 }
 
